@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta name="google-site-verification" content="vr2WHUibNp-4V4k6qTwwA0hKDCQVvS38_u1o4fdH7ys" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Kostenlose Online-Tools: Tippgeschwindigkeit testen, Farbpaletten erstellen, Bilder komprimieren, Filme entdecken und KI-Tools finden.">
+<meta name="color-scheme" content="light dark">
+<title>ToolNest – kostenlose Online-Tools</title>
+<style>
+:root{
+  --bg:#fff;--side:#f4f4f4;--field:#fff;--soft:#ededed;
+  --ink:#000;--on-ink:#fff;--text:#1c1c1c;--muted:#666;--line:#dcdcdc;--line-strong:#8a8a8a;
+  --radius:6px;
+  --sans:"Helvetica Neue",Helvetica,Arial,"Segoe UI",Roboto,system-ui,sans-serif;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+}
+@media(prefers-color-scheme:dark){
+  :root{--bg:#000;--side:#111;--field:#000;--soft:#1c1c1c;--ink:#fff;--on-ink:#000;--text:#e8e8e8;--muted:#9a9a9a;--line:#2c2c2c;--line-strong:#6a6a6a}
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 var(--sans)}
+a{color:var(--ink);text-underline-offset:3px}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+
+/* Gerüst */
+.app{display:grid;grid-template-columns:260px minmax(0,1fr);min-height:100vh}
+.side{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;justify-content:space-between;gap:24px;padding:28px 18px 22px;background:var(--side);border-right:1px solid var(--line);overflow-y:auto}
+.brand{display:block;padding:0 12px;margin-bottom:28px;font-size:1.3rem;font-weight:800;letter-spacing:-.03em;color:var(--ink);text-decoration:none}
+.nav{display:grid;gap:2px}
+.nav a{display:block;padding:9px 12px;border-radius:var(--radius);color:var(--muted);text-decoration:none;font-weight:600;font-size:.95rem}
+.nav a:hover{background:var(--soft);color:var(--ink)}
+.nav a[aria-current="page"]{background:var(--ink);color:var(--on-ink)}
+.side-foot{padding:0 12px;font-size:.82rem;color:var(--muted)}
+.side-foot p{margin:0 0 10px}
+.legal-links a{color:var(--text)}
+
+main{padding:56px clamp(20px,5vw,72px) 80px;min-width:0}
+.tool{max-width:720px}
+.tool h1{margin:0;font-size:clamp(1.7rem,3.2vw,2.3rem);line-height:1.15;letter-spacing:-.035em}
+.tool h1:focus{outline:none}
+.lead{margin:8px 0 32px;color:var(--muted);max-width:56ch}
+
+/* Bedienelemente */
+.btn,button{display:inline-block;cursor:pointer;border:1px solid var(--ink);border-radius:var(--radius);padding:10px 16px;background:var(--ink);color:var(--on-ink);font-weight:700;font-size:.95rem;text-decoration:none;line-height:1.3}
+.btn:hover,button:hover{opacity:.82}
+button.secondary,.btn.secondary{background:transparent;color:var(--ink);border-color:var(--line-strong)}
+button.secondary:hover,.btn.secondary:hover{opacity:1;border-color:var(--ink)}
+button:disabled{opacity:.35;cursor:not-allowed}
+.field{width:100%;min-width:0;background:var(--field);border:1px solid var(--line-strong);border-radius:var(--radius);padding:10px 12px}
+.field::placeholder{color:var(--muted)}
+textarea.field{resize:vertical}
+label,.label{display:block;font-size:.88rem;font-weight:600;color:var(--text);margin-bottom:6px}
+input[type=range]{width:100%;accent-color:var(--ink)}
+input[type=file]{width:100%;font-size:.9rem}
+input[type=file]::file-selector-button{margin-right:12px;border:1px solid var(--line-strong);border-radius:var(--radius);padding:8px 14px;background:transparent;color:var(--ink);font:inherit;font-weight:700;cursor:pointer}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.stack{display:grid;gap:18px}
+.muted{color:var(--muted)}
+.small{font-size:.86rem}
+.hide{display:none!important}
+.box{padding:16px 18px;border:1px solid var(--line);border-radius:var(--radius);background:var(--side)}
+.note{margin:20px 0 0;color:var(--muted);font-size:.86rem}
+
+/* Tipptest */
+.prompt{font:1.15rem/1.7 var(--mono);margin:0}
+.stats{display:flex;gap:40px;align-items:baseline;flex-wrap:wrap;margin-top:24px;padding-top:20px;border-top:1px solid var(--line)}
+.big{font-size:2.6rem;font-weight:800;letter-spacing:-.04em;line-height:1}
+
+/* Farben */
+.palette{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:0 0 20px}
+.swatch{height:150px;border:1px solid var(--line);border-radius:var(--radius);display:flex;align-items:flex-end;justify-content:center;padding:10px 4px;font:700 .78rem var(--mono);letter-spacing:0}
+.swatch:hover{opacity:1;border-color:var(--ink)}
+
+/* Bilder */
+.drop{padding:20px;border:1px dashed var(--line-strong);border-radius:var(--radius)}
+.preview{display:block;max-width:100%;max-height:260px;margin:0 auto;border-radius:var(--radius);border:1px solid var(--line)}
+
+/* Filme */
+.pick strong{font-size:1.25rem;letter-spacing:-.02em}
+.pick p{margin:6px 0 0;color:var(--muted)}
+.tag{display:inline-block;margin:6px 8px 0 0;padding:2px 10px;border:1px solid var(--line-strong);border-radius:999px;font-size:.78rem;font-weight:600}
+
+/* KI-Tools */
+.list{border-top:1px solid var(--line);margin-top:20px}
+.item{padding:16px 0;border-bottom:1px solid var(--line)}
+.item h3{margin:0 0 2px;font-size:1.02rem}
+.item p{margin:0 0 8px;color:var(--muted);font-size:.92rem}
+
+/* Schmale Bildschirme: Seitenleiste wird zur Kopfleiste */
+@media(max-width:800px){
+  .app{display:flex;flex-direction:column}
+  .side{display:contents}
+  .side-top{position:sticky;top:0;z-index:5;background:var(--side);border-bottom:1px solid var(--line);padding:14px 16px 10px}
+  .brand{padding:0 4px;margin-bottom:10px;font-size:1.15rem}
+  .nav{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;scrollbar-width:thin}
+  .nav a{white-space:nowrap;padding:8px 12px}
+  main{padding:32px 16px 48px}
+  .side-foot{padding:20px 16px 32px;border-top:1px solid var(--line);background:var(--side)}
+  .palette{grid-template-columns:1fr;gap:6px}
+  .swatch{height:52px;align-items:center;justify-content:flex-start;padding:0 14px;font-size:.9rem}
+}
+@media(min-width:801px){.side-top{display:block}}
+</style>
+</head>
+<body>
+<div class="app">
+
+  <aside class="side">
+    <div class="side-top">
+      <a class="brand" href="#typing">ToolNest</a>
+      <nav class="nav" aria-label="Werkzeuge">
+        <a href="#typing" data-tool="typing">Tipptest</a>
+        <a href="#colors" data-tool="colors">Farben</a>
+        <a href="#compress" data-tool="compress">Bilder</a>
+        <a href="#movies" data-tool="movies">Filme</a>
+        <a href="#ai" data-tool="ai">KI-Tools</a>
+      </nav>
+    </div>
+    <div class="side-foot">
+      <p>Tipptest und Bildverarbeitung laufen lokal in deinem Browser. Keine Anmeldung, keine Analyse-Cookies.</p>
+      <div class="legal-links">
+        <a href="impressum.html">Impressum</a>
+        <span aria-hidden="true"> · </span>
+        <a href="datenschutz.html">Datenschutz</a>
+      </div>
+      <p style="margin:10px 0 0">© <span id="year"></span> ToolNest</p>
+    </div>
+  </aside>
+
+  <main id="main">
+    <!-- Werbefläche: erst nach Zulassung bei einem Werbenetzwerk hier einfügen -->
+
+    <section class="tool" id="typing" aria-labelledby="h-typing">
+      <h1 id="h-typing" tabindex="-1">Tippgeschwindigkeitstest</h1>
+      <p class="lead">Wie schnell tippst du? Teste dich mit einem kurzen Text.</p>
+      <div class="box"><p class="prompt" id="typingPrompt">Kleine Schritte führen oft zu großen Ergebnissen. Übung macht dich mit der Zeit sicherer und schneller.</p></div>
+      <div style="margin-top:20px">
+        <label for="typingInput">Tippe den Text hier ab</label>
+        <textarea id="typingInput" class="field" rows="3" placeholder="Der Test startet beim ersten Zeichen…"></textarea>
+      </div>
+      <div class="row" style="margin-top:12px"><button id="typingReset" class="secondary">Neu starten</button><span class="muted small" id="typingTime">Zeit: 0 s</span></div>
+      <div class="stats">
+        <div><div class="big"><span id="wpm">0</span></div><div class="muted small">Wörter pro Minute</div></div>
+        <div><div class="big" style="font-size:1.6rem"><b id="accuracy" style="font-weight:800">100%</b></div><div class="muted small">Genauigkeit</div></div>
+      </div>
+    </section>
+
+    <section class="tool" id="colors" aria-labelledby="h-colors" hidden>
+      <h1 id="h-colors" tabindex="-1">Farbpaletten-Generator</h1>
+      <p class="lead">Erzeuge eine Palette und kopiere einen Hex-Farbcode mit einem Klick.</p>
+      <div class="palette" id="palette"></div>
+      <div class="row"><button id="newPalette">Neue Palette</button><button class="secondary" id="copyPalette">Alle Codes kopieren</button></div>
+      <p class="muted small" id="paletteMsg" aria-live="polite" style="margin-top:16px">Tipp: Klicke auf eine Farbe, um ihren Code zu kopieren.</p>
+    </section>
+
+    <section class="tool" id="compress" aria-labelledby="h-compress" hidden>
+      <h1 id="h-compress" tabindex="-1">Bildkomprimierer</h1>
+      <p class="lead">Verkleinere JPG-, PNG- oder WebP-Bilder direkt in deinem Browser.</p>
+      <div class="stack">
+        <div class="drop"><label for="imageFile">Bild auswählen</label><input id="imageFile" type="file" accept="image/png,image/jpeg,image/webp"></div>
+        <img id="imagePreview" class="preview hide" alt="Vorschau des ausgewählten Bildes">
+        <div>
+          <label for="quality">Qualität (bei JPG/WebP): <b id="qualityVal">75%</b></label>
+          <input id="quality" type="range" min="25" max="95" value="75">
+        </div>
+        <div>
+          <label for="format">Ausgabeformat</label>
+          <select id="format" class="field"><option value="image/jpeg">JPG – oft kleinere Dateien</option><option value="image/webp">WebP – modernes Format</option><option value="image/png">PNG – verlustfrei, oft größer</option></select>
+        </div>
+        <div class="row"><button id="compressBtn" disabled>Komprimieren</button><a id="downloadImage" class="btn secondary hide" download="toolnest-bild.jpg">Bild herunterladen</a></div>
+        <div id="compressResult" class="muted small" aria-live="polite">Dein Bild wird lokal im Browser verarbeitet und nicht hochgeladen.</div>
+      </div>
+    </section>
+
+    <section class="tool" id="movies" aria-labelledby="h-movies" hidden>
+      <h1 id="h-movies" tabindex="-1">Film- und Serien-Finder</h1>
+      <p class="lead">Finde eine Idee für deinen nächsten Filmabend.</p>
+      <div class="stack">
+        <div>
+          <label for="movieGenre">Genre</label>
+          <select class="field" id="movieGenre"><option value="all">Alle Genres</option><option>Komödie</option><option>Science-Fiction</option><option>Animation</option><option>Abenteuer</option><option>Drama</option><option>Fantasy</option></select>
+        </div>
+        <div>
+          <label for="movieMood">Stimmung</label>
+          <select class="field" id="movieMood"><option value="all">Egal</option><option value="leicht">Leicht &amp; lustig</option><option value="spannend">Spannend</option><option value="nachdenklich">Nachdenklich</option><option value="familie">Für die Familie</option></select>
+        </div>
+        <div><button id="findMovie">Empfehlung finden</button></div>
+        <div class="box pick" id="movieResult" aria-live="polite">Wähle Genre und Stimmung, dann zeigt dir das Tool eine Empfehlung.</div>
+      </div>
+      <p class="note">Hinweis: Die Empfehlungen sind eine kleine, manuell gepflegte Auswahl. Die Verfügbarkeit variiert je nach Land und Anbieter.</p>
+    </section>
+
+    <section class="tool" id="ai" aria-labelledby="h-ai" hidden>
+      <h1 id="h-ai" tabindex="-1">Verzeichnis kostenloser KI-Tools</h1>
+      <p class="lead">Durchsuche eine kleine Auswahl an KI-Werkzeugen nach Anwendungsbereich.</p>
+      <div class="row">
+        <input class="field" id="aiSearch" type="search" aria-label="KI-Tools durchsuchen" placeholder="Suchen, z. B. schreiben, Bild, lernen…" style="flex:1 1 220px;width:auto">
+        <select class="field" id="aiCategory" aria-label="Kategorie" style="flex:0 1 220px;width:auto"><option value="all">Alle Kategorien</option><option value="Text">Text &amp; Schreiben</option><option value="Bild">Bilder &amp; Design</option><option value="Lernen">Lernen</option><option value="Produktivität">Produktivität</option></select>
+      </div>
+      <div class="list" id="aiList"></div>
+      <p class="note">Preise, Funktionen und Nutzungsgrenzen können sich ändern. Prüfe vor der Nutzung die jeweilige Website.</p>
+    </section>
+  </main>
+
+</div>
+<script>
+const $ = s => document.querySelector(s);
+$("#year").textContent = new Date().getFullYear();
+
+// Navigation: immer nur ein Tool geöffnet
+const toolTitles = {typing:"Tipptest",colors:"Farbpaletten",compress:"Bildkomprimierer",movies:"Film-Finder",ai:"KI-Tools"};
+const panels = [...document.querySelectorAll(".tool")], navLinks = [...document.querySelectorAll("[data-tool]")];
+function showTool(id, moveFocus){
+ if(!toolTitles[id]) id = "typing";
+ panels.forEach(p => p.hidden = p.id !== id);
+ navLinks.forEach(a => a.dataset.tool === id ? a.setAttribute("aria-current","page") : a.removeAttribute("aria-current"));
+ document.title = toolTitles[id] + " – ToolNest";
+ window.scrollTo(0,0);
+ if(moveFocus) $("#h-" + id).focus({preventScroll:true});
+}
+window.addEventListener("hashchange", () => showTool(location.hash.slice(1), true));
+showTool(location.hash.slice(1), false);
+if(!location.hash) document.title = "ToolNest – kostenlose Online-Tools";
+
+// Typing test
+const promptText = $("#typingPrompt").textContent.trim();
+let startAt = null, ticker = null;
+function resetTyping(){clearInterval(ticker);ticker=null;startAt=null;$("#typingInput").value="";$("#typingTime").textContent="Zeit: 0 s";$("#wpm").textContent="0";$("#accuracy").textContent="100%";}
+$("#typingInput").addEventListener("input",()=>{
+ const val=$("#typingInput").value;
+ if(val.length && startAt===null){startAt=Date.now();ticker=setInterval(updateTyping,250);}
+ updateTyping();
+ if(val===promptText){clearInterval(ticker);ticker=null;}
+});
+function updateTyping(){
+ const val=$("#typingInput").value, elapsed=startAt?(Date.now()-startAt)/1000:0;
+ const correct=[...val].filter((c,i)=>c===promptText[i]).length;
+ const minutes=elapsed/60;
+ $("#wpm").textContent=minutes>0?Math.round((val.trim().split(/\s+/).filter(Boolean).length)/minutes):0;
+ $("#accuracy").textContent=(val.length?Math.round(correct/val.length*100):100)+"%";
+ $("#typingTime").textContent="Zeit: "+Math.floor(elapsed)+" s";
+}
+$("#typingReset").addEventListener("click",resetTyping);
+
+// Palette generator
+let colors=[];
+function randColor(){return "#"+Math.floor(Math.random()*16777215).toString(16).padStart(6,"0").toUpperCase();}
+function textOn(hex){
+ const n=parseInt(hex.slice(1),16),r=n>>16,g=(n>>8)&255,b=n&255;
+ return (0.299*r+0.587*g+0.114*b)>150?"#000":"#fff";
+}
+function makePalette(){colors=Array.from({length:5},randColor);renderPalette();}
+function renderPalette(){
+ $("#palette").innerHTML="";
+ colors.forEach(c=>{const d=document.createElement("button");d.className="swatch";d.style.background=c;d.style.color=textOn(c);d.textContent=c;d.setAttribute("aria-label","Farbcode "+c+" kopieren");d.addEventListener("click",async()=>{try{await navigator.clipboard.writeText(c);$("#paletteMsg").textContent=c+" kopiert.";}catch{$("#paletteMsg").textContent="Farbcode: "+c+" (bitte manuell kopieren)";}});$("#palette").append(d);});
+}
+$("#newPalette").addEventListener("click",makePalette);
+$("#copyPalette").addEventListener("click",async()=>{try{await navigator.clipboard.writeText(colors.join(", "));$("#paletteMsg").textContent="Alle Farbcodes kopiert: "+colors.join(", ");}catch{$("#paletteMsg").textContent=colors.join(", ");}});
+makePalette();
+
+// Image compression (client-side)
+let selectedImage=null, compressedUrl=null;
+$("#quality").addEventListener("input",()=>$("#qualityVal").textContent=$("#quality").value+"%");
+$("#imageFile").addEventListener("change",()=>{
+ const f=$("#imageFile").files[0];selectedImage=f||null;$("#compressBtn").disabled=!f;$("#downloadImage").classList.add("hide");$("#compressResult").textContent="";
+ if(compressedUrl){URL.revokeObjectURL(compressedUrl);compressedUrl=null;}
+ if(f){const url=URL.createObjectURL(f);$("#imagePreview").src=url;$("#imagePreview").classList.remove("hide");$("#compressResult").textContent="Originalgröße: "+formatBytes(f.size);}
+});
+function formatBytes(n){if(n<1024)return n+" B";if(n<1048576)return (n/1024).toFixed(1)+" KB";return (n/1048576).toFixed(2)+" MB";}
+$("#compressBtn").addEventListener("click",()=>{
+ if(!selectedImage)return;
+ const img=new Image(), sourceUrl=URL.createObjectURL(selectedImage);
+ img.onload=()=>{
+  const canvas=document.createElement("canvas");canvas.width=img.naturalWidth;canvas.height=img.naturalHeight;
+  const ctx=canvas.getContext("2d");ctx.drawImage(img,0,0);
+  const mime=$("#format").value, quality=Number($("#quality").value)/100;
+  canvas.toBlob(blob=>{
+   URL.revokeObjectURL(sourceUrl);
+   if(!blob){$("#compressResult").textContent="Dieses Format wird vom Browser nicht unterstützt.";return;}
+   if(compressedUrl)URL.revokeObjectURL(compressedUrl);
+   compressedUrl=URL.createObjectURL(blob);
+   $("#downloadImage").href=compressedUrl;$("#downloadImage").download="toolnest-komprimiert."+({"image/jpeg":"jpg","image/webp":"webp","image/png":"png"}[mime]);$("#downloadImage").classList.remove("hide");
+   const diff=Math.round((1-blob.size/selectedImage.size)*100);
+   $("#compressResult").textContent="Fertig: "+formatBytes(selectedImage.size)+" → "+formatBytes(blob.size)+" ("+(diff>=0?diff+"% kleiner":Math.abs(diff)+"% größer") +").";
+  },mime,mime==="image/png"?undefined:quality);
+ };
+ img.onerror=()=>{URL.revokeObjectURL(sourceUrl);$("#compressResult").textContent="Das Bild konnte nicht geöffnet werden.";};
+ img.src=sourceUrl;
+});
+
+// Movie finder: example catalogue, no external API
+const movies=[
+ {title:"Paddington 2",genre:"Komödie",mood:["leicht","familie"],desc:"Herzliche Familienkomödie mit viel Charme."},
+ {title:"Spider-Man: Into the Spider-Verse",genre:"Animation",mood:["spannend","familie"],desc:"Einfallsreiche Animation und Superhelden-Abenteuer."},
+ {title:"The Martian",genre:"Science-Fiction",mood:["spannend"],desc:"Einfallsreicher Überlebenskampf auf dem Mars."},
+ {title:"Interstellar",genre:"Science-Fiction",mood:["nachdenklich","spannend"],desc:"Großes Weltraum-Abenteuer über Zeit und Familie."},
+ {title:"How to Train Your Dragon",genre:"Animation",mood:["familie","leicht"],desc:"Ein warmherziges Fantasy-Abenteuer."},
+ {title:"The Princess Bride",genre:"Fantasy",mood:["leicht","familie"],desc:"Märchenhafte Abenteuer mit Humor."},
+ {title:"Hidden Figures",genre:"Drama",mood:["nachdenklich"],desc:"Inspirierende Geschichte über Mathematikerinnen bei der NASA."},
+ {title:"Jumanji: Welcome to the Jungle",genre:"Abenteuer",mood:["leicht","spannend"],desc:"Rasantes Abenteuer mit Humor."},
+ {title:"Knives Out",genre:"Drama",mood:["spannend"],desc:"Ein Krimi voller Rätsel und überraschender Wendungen."},
+ {title:"The Mitchells vs. the Machines",genre:"Animation",mood:["leicht","familie"],desc:"Familienchaos trifft auf einen Roboter-Aufstand."}
+];
+$("#findMovie").addEventListener("click",()=>{
+ const g=$("#movieGenre").value,m=$("#movieMood").value;
+ const matches=movies.filter(x=>(g==="all"||x.genre===g)&&(m==="all"||x.mood.includes(m)));
+ const out=$("#movieResult");
+ if(!matches.length){out.textContent="Keine passende Empfehlung gefunden. Wähle ein anderes Genre oder eine andere Stimmung.";return;}
+ const x=matches[Math.floor(Math.random()*matches.length)];
+ out.innerHTML="<strong></strong><div><span class='tag'></span></div><p></p>";
+ out.querySelector("strong").textContent=x.title;out.querySelector(".tag").textContent=x.genre;out.querySelector("p").textContent=x.desc;
+});
+
+// Curated AI tools directory (descriptions kept neutral)
+const aiTools=[
+ {name:"ChatGPT",cat:"Text",desc:"Allgemeiner KI-Assistent für Ideen, Erklärungen und Entwürfe.",url:"https://chatgpt.com",tags:"schreiben lernen fragen"},
+ {name:"Google Gemini",cat:"Text",desc:"KI-Assistent für Fragen, Zusammenfassungen und kreative Aufgaben.",url:"https://gemini.google.com",tags:"schreiben fragen produktivität"},
+ {name:"Claude",cat:"Text",desc:"KI-Assistent für Textarbeit, Analyse und längere Dokumente.",url:"https://claude.ai",tags:"schreiben analyse"},
+ {name:"Canva",cat:"Bild",desc:"Designplattform mit kostenlosen Funktionen und KI-Werkzeugen.",url:"https://www.canva.com",tags:"design bilder präsentation"},
+ {name:"Adobe Express",cat:"Bild",desc:"Werkzeuge zum Gestalten von Grafiken und Social-Media-Inhalten.",url:"https://www.adobe.com/express/",tags:"design bilder grafik"},
+ {name:"Photopea",cat:"Bild",desc:"Browserbasierter Bildeditor für viele gängige Dateiformate.",url:"https://www.photopea.com",tags:"bild bearbeiten design"},
+ {name:"Khan Academy",cat:"Lernen",desc:"Lernplattform mit kostenlosen Lernmaterialien; Verfügbarkeit je nach Fach.",url:"https://www.khanacademy.org",tags:"lernen mathematik schule"},
+ {name:"DeepL",cat:"Produktivität",desc:"Übersetzungswerkzeug mit kostenlosen und kostenpflichtigen Optionen.",url:"https://www.deepl.com/translator",tags:"übersetzen sprache text"},
+ {name:"Perplexity",cat:"Text",desc:"Antwort- und Recherchewerkzeug, das Quellen anzeigen kann.",url:"https://www.perplexity.ai",tags:"recherche fragen lernen"},
+ {name:"Notion",cat:"Produktivität",desc:"Notizen, Aufgaben und Wissenssammlungen an einem Ort organisieren.",url:"https://www.notion.so",tags:"organisation planen notizen"}
+];
+function renderAI(){
+ const q=$("#aiSearch").value.toLowerCase().trim(), cat=$("#aiCategory").value;
+ const list=aiTools.filter(t=>(cat==="all"||t.cat===cat)&&(t.name+" "+t.desc+" "+t.tags).toLowerCase().includes(q));
+ const root=$("#aiList");root.innerHTML="";
+ if(!list.length){const p=document.createElement("p");p.className="muted";p.textContent="Keine passenden Tools gefunden. Ändere den Suchbegriff oder die Kategorie.";root.append(p);return;}
+ list.forEach(t=>{
+  const item=document.createElement("div");item.className="item";
+  const h=document.createElement("h3");h.textContent=t.name;
+  const p=document.createElement("p");p.textContent=t.desc;
+  const tag=document.createElement("span");tag.className="tag";tag.style.marginTop="0";tag.textContent=t.cat;
+  const a=document.createElement("a");a.href=t.url;a.target="_blank";a.rel="noopener noreferrer";a.textContent="Website öffnen ↗";
+  item.append(h,p,tag,document.createTextNode(" "),a);root.append(item);
+ });
+}
+$("#aiSearch").addEventListener("input",renderAI);$("#aiCategory").addEventListener("change",renderAI);renderAI();
+</script>
+</body>
+</html>
