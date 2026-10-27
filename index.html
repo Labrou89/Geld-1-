@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Kostenlose Online-Tools: Tippgeschwindigkeit testen, Farbpaletten erstellen, Bilder komprimieren, Filme entdecken und KI-Tools finden.">
+<title>ToolNest – kostenlose Online-Tools</title>
+<style>
+:root{--bg:#0b1020;--panel:#121a2d;--panel2:#19243a;--text:#eef3ff;--muted:#a7b3cb;--line:#293650;--accent:#9ce7cf;--accent2:#b6a4ff;--radius:18px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 10% 0%,#1d2b49 0,transparent 40%),var(--bg);color:var(--text);font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+a{color:var(--accent)}button,input,select{font:inherit}button{cursor:pointer;border:0;border-radius:12px;padding:10px 14px;background:var(--accent);color:#101a25;font-weight:750}button.secondary{background:var(--panel2);color:var(--text);border:1px solid var(--line)}button:hover{filter:brightness(1.07)}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--accent2);outline-offset:2px}
+.wrap{width:min(1120px,calc(100% - 32px));margin:auto}.top{padding:24px 0 12px;display:flex;align-items:center;justify-content:space-between;gap:16px}.brand{font-size:1.25rem;font-weight:900;letter-spacing:-.04em}.brand span{color:var(--accent)}nav{display:flex;flex-wrap:wrap;gap:8px}nav a{text-decoration:none;color:var(--muted);padding:8px 10px;border-radius:9px;font-size:.9rem}nav a:hover{background:var(--panel2);color:var(--text)}
+.hero{padding:60px 0 35px;max-width:780px}.eyebrow{color:var(--accent);font-weight:800;text-transform:uppercase;letter-spacing:.12em;font-size:.78rem}.hero h1{font-size:clamp(2.5rem,6vw,4.8rem);line-height:1.02;letter-spacing:-.06em;margin:14px 0}.hero p{color:var(--muted);font-size:1.1rem;max-width:650px}.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px}.chip{border:1px solid var(--line);border-radius:999px;padding:7px 12px;color:var(--muted);font-size:.88rem}
+.tools{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;padding:12px 0 50px}.card{background:linear-gradient(150deg,rgba(25,36,58,.96),rgba(18,26,45,.96));border:1px solid var(--line);border-radius:var(--radius);padding:22px;min-width:0;box-shadow:0 16px 50px #00000012}.card.wide{grid-column:1/-1}.cardhead{display:flex;align-items:flex-start;gap:13px;margin-bottom:16px}.emoji{width:44px;height:44px;display:grid;place-items:center;background:#26334c;border-radius:14px;font-size:1.4rem;flex-shrink:0}.card h2{margin:0;font-size:1.28rem;letter-spacing:-.025em}.sub{color:var(--muted);font-size:.92rem;margin:3px 0 0}.row{display:flex;gap:9px;align-items:center;flex-wrap:wrap}.field{width:100%;background:#0b1222;color:var(--text);border:1px solid var(--line);padding:11px 12px;border-radius:11px;min-width:0}.field::placeholder{color:#7e8ba5}.stack{display:grid;gap:10px}.muted{color:var(--muted)}.small{font-size:.85rem}.result{padding:13px;background:#0b1222;border:1px solid var(--line);border-radius:12px;margin-top:12px}.big{font-size:2rem;font-weight:900;letter-spacing:-.04em}.palette{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:14px 0}.swatch{height:95px;border-radius:12px;border:1px solid #ffffff20;display:flex;align-items:flex-end;justify-content:center;padding:6px;color:white;text-shadow:0 1px 5px #000;font-size:.75rem;font-weight:700;cursor:pointer}.drop{border:1px dashed #50617f;padding:22px;border-radius:14px;text-align:center;background:#0b1222}.drop input{max-width:100%}.preview{max-width:100%;max-height:240px;display:block;margin:12px auto;border-radius:12px}.list{display:grid;gap:10px}.item{background:#0b1222;border:1px solid var(--line);border-radius:12px;padding:13px}.item h3{font-size:1rem;margin:0 0 4px}.item p{margin:0 0 8px;color:var(--muted);font-size:.9rem}.tag{font-size:.75rem;color:var(--accent);border:1px solid #41695f;border-radius:999px;padding:3px 8px;display:inline-block;margin:2px 4px 2px 0}.footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);font-size:.88rem}.adslot{border:1px dashed #40506d;border-radius:12px;padding:13px;text-align:center;color:#7e8ba5;font-size:.8rem;margin:18px 0}.hide{display:none!important}
+@media(max-width:760px){.tools{grid-template-columns:1fr}.card.wide{grid-column:auto}.top{align-items:flex-start;flex-direction:column}.hero{padding-top:38px}.palette{gap:5px}.swatch{height:80px;font-size:.65rem}.card{padding:17px}}
+</style>
+</head>
+<body>
+<header class="wrap top">
+  <a class="brand" href="#" style="color:inherit;text-decoration:none">Tool<span>Nest</span> ✳</a>
+  <nav aria-label="Hauptnavigation">
+    <a href="#typing">Tipptest</a><a href="#colors">Farben</a><a href="#compress">Bilder</a><a href="#movies">Filme</a><a href="#ai">KI-Tools</a>
+  </nav>
+</header>
+<main class="wrap">
+<section class="hero">
+  <div class="eyebrow">Einfach · kostenlos · direkt im Browser</div>
+  <h1>Kleine Tools.<br><span style="color:var(--accent)">Große Hilfe.</span></h1>
+  <p>Praktische Mini-Werkzeuge für Kreativität, Dateien und Freizeit. Ohne Anmeldung und ohne unnötigen Schnickschnack.</p>
+  <div class="chips"><span class="chip">✦ 5 kostenlose Tools</span><span class="chip">✦ Mobilfreundlich</span><span class="chip">✦ Keine Anmeldung</span></div>
+</section>
+<div class="adslot" aria-label="Werbefläche">Werbefläche – erst nach Zulassung bei einem Werbenetzwerk aktivieren</div>
+<section class="tools">
+<article class="card" id="typing">
+  <div class="cardhead"><div class="emoji">⌨️</div><div><h2>Tippgeschwindigkeitstest</h2><p class="sub">Wie schnell tippst du? Teste dich mit einem kurzen Text.</p></div></div>
+  <div class="result"><p id="typingPrompt" style="margin:0">Kleine Schritte führen oft zu großen Ergebnissen. Übung macht dich mit der Zeit sicherer und schneller.</p></div>
+  <label class="small muted" for="typingInput">Tippe den Text hier ab:</label>
+  <textarea id="typingInput" class="field" rows="3" placeholder="Test startet beim ersten Zeichen…"></textarea>
+  <div class="row" style="margin-top:10px"><button id="typingReset" class="secondary">Neu starten</button><span class="muted small" id="typingTime">Zeit: 0 s</span></div>
+  <div class="result"><div class="big"><span id="wpm">0</span> <span class="small muted">Wörter/Min.</span></div><span class="muted small">Genauigkeit: <b id="accuracy">100%</b></span></div>
+</article>
+<article class="card" id="colors">
+  <div class="cardhead"><div class="emoji">🎨</div><div><h2>Farbpaletten-Generator</h2><p class="sub">Erzeuge eine Palette und kopiere einen Hex-Farbcode mit einem Klick.</p></div></div>
+  <div class="palette" id="palette"></div>
+  <div class="row"><button id="newPalette">Neue Palette</button><button class="secondary" id="copyPalette">Alle Codes kopieren</button></div>
+  <p class="muted small" id="paletteMsg" aria-live="polite">Tipp: Klicke auf eine Farbe, um ihren Code zu kopieren.</p>
+</article>
+<article class="card" id="compress">
+  <div class="cardhead"><div class="emoji">🖼️</div><div><h2>Bildkomprimierer</h2><p class="sub">Verkleinere JPG-, PNG- oder WebP-Bilder direkt in deinem Browser.</p></div></div>
+  <div class="drop"><label for="imageFile">Bild auswählen</label><br><input id="imageFile" type="file" accept="image/png,image/jpeg,image/webp" style="margin-top:10px"></div>
+  <img id="imagePreview" class="preview hide" alt="Vorschau des ausgewählten Bildes">
+  <div class="stack" style="margin-top:12px">
+    <label class="small muted" for="quality">Qualität (bei JPG/WebP): <b id="qualityVal">75%</b></label>
+    <input id="quality" type="range" min="25" max="95" value="75">
+    <label class="small muted" for="format">Ausgabeformat</label>
+    <select id="format" class="field"><option value="image/jpeg">JPG – oft kleinere Dateien</option><option value="image/webp">WebP – modernes Format</option><option value="image/png">PNG – verlustfrei, oft größer</option></select>
+    <button id="compressBtn" disabled>Komprimieren</button>
+    <div id="compressResult" class="muted small" aria-live="polite">Dein Bild wird lokal im Browser verarbeitet und nicht hochgeladen.</div>
+    <a id="downloadImage" class="hide" download="toolnest-bild.jpg">Komprimiertes Bild herunterladen</a>
+  </div>
+</article>
+<article class="card" id="movies">
+  <div class="cardhead"><div class="emoji">🍿</div><div><h2>Film- und Serien-Finder</h2><p class="sub">Finde eine Idee für deinen nächsten Filmabend.</p></div></div>
+  <div class="stack">
+    <label class="small muted" for="movieGenre">Genre</label>
+    <select class="field" id="movieGenre"><option value="all">Alle Genres</option><option>Komödie</option><option>Science-Fiction</option><option>Animation</option><option>Abenteuer</option><option>Drama</option><option>Fantasy</option></select>
+    <label class="small muted" for="movieMood">Stimmung</label>
+    <select class="field" id="movieMood"><option value="all">Egal</option><option value="leicht">Leicht & lustig</option><option value="spannend">Spannend</option><option value="nachdenklich">Nachdenklich</option><option value="familie">Für die Familie</option></select>
+    <button id="findMovie">Empfehlung finden</button>
+    <div class="result" id="movieResult" aria-live="polite">Wähle deine Stimmung und lass dir eine Empfehlung anzeigen.</div>
+    <p class="muted small">Hinweis: Empfehlungen sind eine kleine, manuell gepflegte Auswahl. Verfügbarkeit variiert je nach Land und Anbieter.</p>
+  </div>
+</article>
+<article class="card wide" id="ai">
+  <div class="cardhead"><div class="emoji">✨</div><div><h2>Verzeichnis kostenloser KI-Tools</h2><p class="sub">Durchsuche eine kleine Auswahl an KI-Werkzeugen nach Anwendungsbereich.</p></div></div>
+  <div class="row" style="margin-bottom:12px">
+    <input class="field" id="aiSearch" placeholder="Suchen, z. B. schreiben, Bild, lernen…" style="flex:1">
+    <select class="field" id="aiCategory" style="max-width:220px"><option value="all">Alle Kategorien</option><option value="Text">Text & Schreiben</option><option value="Bild">Bilder & Design</option><option value="Lernen">Lernen</option><option value="Produktivität">Produktivität</option></select>
+  </div>
+  <div class="list" id="aiList"></div>
+  <p class="muted small">Preise, Funktionen und Nutzungsgrenzen können sich ändern. Vor der Nutzung bitte die jeweilige Website prüfen.</p>
+</article>
+</section>
+</main>
+<footer class="wrap footer">
+  <p><b>ToolNest</b> – kostenlose Browser-Tools.</p>
+  <p>Datenschutz: Der Tipp-Test und die Bildverarbeitung laufen lokal in deinem Browser. Diese Demo verwendet keine Analyse-Cookies und sendet keine Formulare ab.</p>
+  <p>Vor einer öffentlichen Veröffentlichung ergänzen: Impressum, Datenschutzerklärung, Kontaktmöglichkeit und gegebenenfalls Cookie-/Werbehinweise nach den für dich geltenden Regeln.</p>
+  <p>© <span id="year"></span> ToolNest</p>
+</footer>
+<script>
+const $ = s => document.querySelector(s);
+$("#year").textContent = new Date().getFullYear();
+
+// Typing test
+const promptText = $("#typingPrompt").textContent.trim();
+let startAt = null, ticker = null;
+function resetTyping(){clearInterval(ticker);ticker=null;startAt=null;$("#typingInput").value="";$("#typingTime").textContent="Zeit: 0 s";$("#wpm").textContent="0";$("#accuracy").textContent="100%";}
+$("#typingInput").addEventListener("input",()=>{
+ const val=$("#typingInput").value;
+ if(val.length && startAt===null){startAt=Date.now();ticker=setInterval(updateTyping,250);}
+ updateTyping();
+ if(val===promptText){clearInterval(ticker);ticker=null;}
+});
+function updateTyping(){
+ const val=$("#typingInput").value, elapsed=startAt?(Date.now()-startAt)/1000:0;
+ const correct=[...val].filter((c,i)=>c===promptText[i]).length;
+ const minutes=elapsed/60;
+ $("#wpm").textContent=minutes>0?Math.round((val.trim().split(/\s+/).filter(Boolean).length)/minutes):0;
+ $("#accuracy").textContent=(val.length?Math.round(correct/val.length*100):100)+"%";
+ $("#typingTime").textContent="Zeit: "+Math.floor(elapsed)+" s";
+}
+$("#typingReset").addEventListener("click",resetTyping);
+
+// Palette generator
+let colors=[];
+function randColor(){return "#"+Math.floor(Math.random()*16777215).toString(16).padStart(6,"0").toUpperCase();}
+function makePalette(){colors=Array.from({length:5},randColor);renderPalette();}
+function renderPalette(){
+ $("#palette").innerHTML="";
+ colors.forEach(c=>{const d=document.createElement("button");d.className="swatch";d.style.background=c;d.textContent=c;d.setAttribute("aria-label","Farbcode "+c+" kopieren");d.addEventListener("click",async()=>{try{await navigator.clipboard.writeText(c);$("#paletteMsg").textContent=c+" kopiert.";}catch{$("#paletteMsg").textContent="Farbcode: "+c+" (bitte manuell kopieren)";}});$("#palette").append(d);});
+}
+$("#newPalette").addEventListener("click",makePalette);
+$("#copyPalette").addEventListener("click",async()=>{try{await navigator.clipboard.writeText(colors.join(", "));$("#paletteMsg").textContent="Alle Farbcodes kopiert: "+colors.join(", ");}catch{$("#paletteMsg").textContent=colors.join(", ");}});
+makePalette();
+
+// Image compression (client-side)
+let selectedImage=null, compressedUrl=null;
+$("#quality").addEventListener("input",()=>$("#qualityVal").textContent=$("#quality").value+"%");
+$("#imageFile").addEventListener("change",()=>{
+ const f=$("#imageFile").files[0];selectedImage=f||null;$("#compressBtn").disabled=!f;$("#downloadImage").classList.add("hide");$("#compressResult").textContent="";
+ if(compressedUrl){URL.revokeObjectURL(compressedUrl);compressedUrl=null;}
+ if(f){const url=URL.createObjectURL(f);$("#imagePreview").src=url;$("#imagePreview").classList.remove("hide");$("#compressResult").textContent="Originalgröße: "+formatBytes(f.size);}
+});
+function formatBytes(n){if(n<1024)return n+" B";if(n<1048576)return (n/1024).toFixed(1)+" KB";return (n/1048576).toFixed(2)+" MB";}
+$("#compressBtn").addEventListener("click",()=>{
+ if(!selectedImage)return;
+ const img=new Image(), sourceUrl=URL.createObjectURL(selectedImage);
+ img.onload=()=>{
+  const canvas=document.createElement("canvas");canvas.width=img.naturalWidth;canvas.height=img.naturalHeight;
+  const ctx=canvas.getContext("2d");ctx.drawImage(img,0,0);
+  const mime=$("#format").value, quality=Number($("#quality").value)/100;
+  canvas.toBlob(blob=>{
+   URL.revokeObjectURL(sourceUrl);
+   if(!blob){$("#compressResult").textContent="Dieses Format wird vom Browser nicht unterstützt.";return;}
+   if(compressedUrl)URL.revokeObjectURL(compressedUrl);
+   compressedUrl=URL.createObjectURL(blob);
+   $("#downloadImage").href=compressedUrl;$("#downloadImage").download="toolnest-komprimiert."+({"image/jpeg":"jpg","image/webp":"webp","image/png":"png"}[mime]);$("#downloadImage").classList.remove("hide");
+   const diff=Math.round((1-blob.size/selectedImage.size)*100);
+   $("#compressResult").textContent="Fertig: "+formatBytes(selectedImage.size)+" → "+formatBytes(blob.size)+" ("+(diff>=0?diff+"% kleiner":Math.abs(diff)+"% größer") +").";
+  },mime,mime==="image/png"?undefined:quality);
+ };
+ img.onerror=()=>{URL.revokeObjectURL(sourceUrl);$("#compressResult").textContent="Das Bild konnte nicht geöffnet werden.";};
+ img.src=sourceUrl;
+});
+
+// Movie finder: example catalogue, no external API
+const movies=[
+ {title:"Paddington 2",genre:"Komödie",mood:["leicht","familie"],desc:"Herzliche Familienkomödie mit viel Charme."},
+ {title:"Spider-Man: Into the Spider-Verse",genre:"Animation",mood:["spannend","familie"],desc:"Einfallsreiche Animation und Superhelden-Abenteuer."},
+ {title:"The Martian",genre:"Science-Fiction",mood:["spannend"],desc:"Einfallsreicher Überlebenskampf auf dem Mars."},
+ {title:"Interstellar",genre:"Science-Fiction",mood:["nachdenklich","spannend"],desc:"Großes Weltraum-Abenteuer über Zeit und Familie."},
+ {title:"How to Train Your Dragon",genre:"Animation",mood:["familie","leicht"],desc:"Ein warmherziges Fantasy-Abenteuer."},
+ {title:"The Princess Bride",genre:"Fantasy",mood:["leicht","familie"],desc:"Märchenhafte Abenteuer mit Humor."},
+ {title:"Hidden Figures",genre:"Drama",mood:["nachdenklich"],desc:"Inspirierende Geschichte über Mathematikerinnen bei der NASA."},
+ {title:"Jumanji: Welcome to the Jungle",genre:"Abenteuer",mood:["leicht","spannend"],desc:"Rasantes Abenteuer mit Humor."},
+ {title:"Knives Out",genre:"Drama",mood:["spannend"],desc:"Ein Krimi voller Rätsel und überraschender Wendungen."},
+ {title:"The Mitchells vs. the Machines",genre:"Animation",mood:["leicht","familie"],desc:"Familienchaos trifft auf einen Roboter-Aufstand."}
+];
+$("#findMovie").addEventListener("click",()=>{
+ const g=$("#movieGenre").value,m=$("#movieMood").value;
+ const matches=movies.filter(x=>(g==="all"||x.genre===g)&&(m==="all"||x.mood.includes(m)));
+ const out=$("#movieResult");
+ if(!matches.length){out.textContent="Keine passende Empfehlung gefunden. Wähle ein anderes Genre oder eine andere Stimmung.";return;}
+ const x=matches[Math.floor(Math.random()*matches.length)];
+ out.innerHTML="<strong></strong><div class='tag'></div><p style='margin-bottom:0;color:var(--muted)'></p>";
+ out.querySelector("strong").textContent=x.title;out.querySelector(".tag").textContent=x.genre;out.querySelector("p").textContent=x.desc;
+});
+
+// Curated AI tools directory (descriptions kept neutral)
+const aiTools=[
+ {name:"ChatGPT",cat:"Text",desc:"Allgemeiner KI-Assistent für Ideen, Erklärungen und Entwürfe.",url:"https://chatgpt.com",tags:"schreiben lernen fragen"},
+ {name:"Google Gemini",cat:"Text",desc:"KI-Assistent für Fragen, Zusammenfassungen und kreative Aufgaben.",url:"https://gemini.google.com",tags:"schreiben fragen produktivität"},
+ {name:"Claude",cat:"Text",desc:"KI-Assistent für Textarbeit, Analyse und längere Dokumente.",url:"https://claude.ai",tags:"schreiben analyse"},
+ {name:"Canva",cat:"Bild",desc:"Designplattform mit kostenlosen Funktionen und KI-Werkzeugen.",url:"https://www.canva.com",tags:"design bilder präsentation"},
+ {name:"Adobe Express",cat:"Bild",desc:"Werkzeuge zum Gestalten von Grafiken und Social-Media-Inhalten.",url:"https://www.adobe.com/express/",tags:"design bilder grafik"},
+ {name:"Photopea",cat:"Bild",desc:"Browserbasierter Bildeditor für viele gängige Dateiformate.",url:"https://www.photopea.com",tags:"bild bearbeiten design"},
+ {name:"Khan Academy",cat:"Lernen",desc:"Lernplattform mit kostenlosen Lernmaterialien; Verfügbarkeit je nach Fach.",url:"https://www.khanacademy.org",tags:"lernen mathematik schule"},
+ {name:"DeepL",cat:"Produktivität",desc:"Übersetzungswerkzeug mit kostenlosen und kostenpflichtigen Optionen.",url:"https://www.deepl.com/translator",tags:"übersetzen sprache text"},
+ {name:"Perplexity",cat:"Text",desc:"Antwort- und Recherchewerkzeug, das Quellen anzeigen kann.",url:"https://www.perplexity.ai",tags:"recherche fragen lernen"},
+ {name:"Notion",cat:"Produktivität",desc:"Notizen, Aufgaben und Wissenssammlungen an einem Ort organisieren.",url:"https://www.notion.so",tags:"organisation planen notizen"}
+];
+function renderAI(){
+ const q=$("#aiSearch").value.toLowerCase().trim(), cat=$("#aiCategory").value;
+ const list=aiTools.filter(t=>(cat==="all"||t.cat===cat)&&(t.name+" "+t.desc+" "+t.tags).toLowerCase().includes(q));
+ const root=$("#aiList");root.innerHTML="";
+ if(!list.length){root.textContent="Keine passenden Tools gefunden.";return;}
+ list.forEach(t=>{
+  const item=document.createElement("div");item.className="item";
+  const h=document.createElement("h3");h.textContent=t.name;
+  const p=document.createElement("p");p.textContent=t.desc;
+  const tag=document.createElement("span");tag.className="tag";tag.textContent=t.cat;
+  const a=document.createElement("a");a.href=t.url;a.target="_blank";a.rel="noopener noreferrer";a.textContent="Website öffnen ↗";
+  item.append(h,p,tag,document.createTextNode(" "),a);root.append(item);
+ });
+}
+$("#aiSearch").addEventListener("input",renderAI);$("#aiCategory").addEventListener("change",renderAI);renderAI();
+</script>
+</body>
+</html>
